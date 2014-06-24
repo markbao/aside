@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<link rel='stylesheet' type='text/css' href='firstrun.css'>
+	<script type="text/javascript" charset="utf-8" src="firstrun.js"></script>
+</head>
+<body onload="initialize()">
+	<h1>Welcome to Cloudmarks!</h1>
+	<p>Please select the bookmarking service to use.</p>
+	<div class="aligncenter" style="margin-top: 20px">
+		<span class="servicebtn" id="pinboard" onclick="setService()">Pinboard</span><br>
+		<span class="servicebtn" id="delicious" onclick="setService()">Delicious</span><br>
+		<span class="servicebtn" id="kippt" onclick="setService()">Kippt</span>
+		<span class="servicebtn" id="local" onclick="setService()">Local Storage Only</span>
+	</div>
+	<div class="aligncenter" style="margin-top: 12px">
+		<span id="loginbtn">Log In</span>
+	</div>
+	<p id="dptip" class="hidden tip">
+		<strong>Tip</strong>: If you see a login prompt, select "Remember this password in my keychain".
+		Otherwise, Cloudmarks will prompt you to log in each time you start Safari.
+	</p>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="settings.css">
+		<script type="text/javascript" src="settings-main.js"></script>
+		<title>Cloudmarks Settings</title>
+	</head>
+	<body id="settingsBody" onload="initialize()">
+		<h1>Cloudmarks Settings<a id="helpLink" class="link" href="help-hotkey.html" 
+			target="cksse_HelpWin" name="helpLink">Help</a></h1>
+		<h2 style="display:none">General</h2>
+		<h3>Bookmarking Service</h3>
+		<p class="explanation">Which bookmarking service do you want to use?</p>
+		<div class="flexbox">
+			<form id="bsForm" name="bsForm">
+				<input type="radio" id="bs_local" name="bsRadio" onchange="setBmService('local')">
+				<label for="bs_local">Local storage only</label><br>
+				<input type="radio" id="bs_pinboard" name="bsRadio" onchange="setBmService('pinboard')">
+				<label for="bs_pinboard">Pinboard</label><br>
+				<input type="radio" id="bs_delicious" name="bsRadio" onchange="setBmService('delicious')">
+				<label for="bs_delicious">Delicious</label>
+				<span id="delicious_tip">(Yahoo! ID accounts not supported)</span><br>
+				<input type="radio" id="bs_kippt" name="bsRadio" onchange="setBmService('kippt')">
+				<label for="bs_kippt">Kippt</label>
+			</form>
+			<form id="absForm" name="absForm">
+				<p class="slimbmargin">When adding a bookmark, save it on:</p>
+				<div class="indent">
+					<input type="checkbox" id="ab_pinboard" class="abcb" onchange="toggleAbmService('pinboard')">
+					<label for="ab_pinboard" class="abcb">Pinboard</label><span class="spacer"></span>
+					<input type="checkbox" id="ab_delicious" class="abcb" onchange="toggleAbmService('delicious')">
+					<label for="ab_delicious" class="abcb">Delicious</label><span class="spacer"></span>
+					<input type="checkbox" id="ab_kippt" class="abcb" onchange="toggleAbmService('kippt')">
+					<label for="ab_kippt" class="abcb">Kippt</label>
+				</div>
+				<p class="explanation small">
+					Tip: You can add a bookmark to more than one service at a time.</p>
+			</form>
+		</div>
+		<form id="klForm" name="klForm" class="indent2 hidden">
+			<label><span style="display:inline-block; width:11em; text-align:right;">Show bookmarks from: </span>
+				<select id="kipptGetListMenu" onchange="setKipptGetList()" disabled></select>
+			</label>
+			<br>
+			<label><span style="display:inline-block; width:11em; text-align:right;">Add bookmarks to: </span>
+				<select id="kipptAddListMenu" onchange="setKipptAddList()" disabled></select>
+			</label>
+		</form>
+		<h3>Hotkeys</h3>
+		<p class="explanation">Click inside a box below and then type the hotkey you want to use. 
+			The new hotkey will take effect immediately.</p>
+		<form id="hkForm" name="hkForm">
+			<label for="hotkeyInput0" style="display:inline-block;width:10em;text-align:right">Bookmark list:</label>
+			<input type="text" id="hotkeyInput0" onmouseup="handleHotkeyFocus(0)" onfocus="handleHotkeyFocus(0)" 
+				onkeydown="handleHotKeyDown(0)" which="hotkey">
+			<button type="button" class="sButton" onclick="clearHotkey('hotkey')">Clear</button>
+			<button type="button" class="sButton" onclick="resetHotkey('hotkey')">Reset to Default</button>
+			<span id="hkStatusMsg0" class="statusMsg">Hotkey saved.</span>
+			<br>
+			<label for="hotkeyInput1" style="display:inline-block;width:10em;text-align:right">Add bookmark form:</label>
+			<input type="text" id="hotkeyInput1" onmouseup="handleHotkeyFocus(1)" onfocus="handleHotkeyFocus(1)" 
+				onkeydown="handleHotKeyDown(1)" which="addHotkey">
+			<button type="button" class="sButton" onclick="clearHotkey('addHotkey')">Clear</button>
+			<button type="button" class="sButton" onclick="resetHotkey('addHotkey')">Reset to Default</button>
+			<span id="hkStatusMsg1" class="statusMsg">Hotkey saved.</span>
+		</form>
+		<h3>Opening bookmarks</h3>
+		<form id="obForm" name="obForm">
+			<input type="checkbox" id="ntCheckbox" onchange="toggleTargetBit()">
+			<label for="ntCheckbox">Open bookmark in new tab</label><br>
+			<input type="checkbox" id="tbCheckbox" onchange="toggleTargetBit()">
+			<label for="tbCheckbox">Open new tab in background</label><br>
+			<input type="checkbox" id="taCheckbox" onchange="toggleTargetBit()">
+			<label for="taCheckbox">Put new tab next to current tab:</label>&nbsp;
+			<input type="radio" id="tpRadio0" name="tpRadio" onchange="setNewTabPosition(0)">
+			<label for="tpRadio0" class="tpLabel">on left</label>&nbsp;
+			<input type="radio" id="tpRadio1" name="tpRadio" onchange="setNewTabPosition(1)">
+			<label for="tpRadio1" class="tpLabel">on right</label><br>
+			<input type="checkbox" id="uwCheckbox" onchange="toggleTargetBit()">
+			<label for="uwCheckbox">Use new window instead of new tab</label>
+		</form>
+		<h3>Miscellaneous</h3>
+		<form id="miForm" name="miForm">
+			<div>
+				<input type="checkbox" id="upCheckbox" name="usePopover" onchange="toggleSetting()">
+				<label for="upCheckbox">Use popover if available</label>
+				<br>
+				<input type="checkbox" id="srCheckbox" name="showRecents" onchange="toggleSetting()">
+				<label for="srCheckbox">When I open Cloudmarks, show</label>
+				<input type="text" id="rlInput" size="2" maxlength="2" onchange="setRecentsLength()">
+				<span>:</span><br>
+				<span class="indent">&nbsp;</span>
+				<input type="radio" id="sfRadio0" name="sfRadio" onchange="setShowFavorites(false)">
+				<label for="sfRadio0">most recently added bookmarks</label><br>
+				<span class="indent">&nbsp;</span>
+				<input type="radio" id="sfRadio1" name="sfRadio" onchange="setShowFavorites(true)">
+				<label for="sfRadio1">most frequently opened bookmarks</label>
+				<br>
+				<label>Sort search results by:</label>&nbsp;
+				<input type="radio" id="ssRadio0" name="ssRadio" value="relevance" onchange="setSearchSort()">
+				<label for="ssRadio0" class="ssLabel">relevance</label>&nbsp;
+				<input type="radio" id="ssRadio1" name="ssRadio" value="recency" onchange="setSearchSort()">
+				<label for="ssRadio1" class="ssLabel">recency</label>
+				<br>
+				<input type="checkbox" id="bsCheckbox" name="allowBarSearch" onchange="toggleSetting()">
+				<label for="bsCheckbox">Search bookmarks from address bar with query prefix:</label>
+				<input type="text" id="bsInput" size="4" onchange="setBarSearchPrefix()">
+			</div>
+		</form>
+	</body>
+</html>

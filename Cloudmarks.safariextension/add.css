@@ -1,0 +1,104 @@
+html {
+	height: 100%;
+	font: normal 13px Helvetica, sans-serif;
+}
+body.iframed {
+	display: -webkit-box;
+	-webkit-box-pack: center;
+	margin-top: 20px;
+	background-color: rgba(0,0,0,0.5);
+	cursor: default;
+}
+body.popover {
+	padding-left: 5px;
+	background-color: rgba(240,240,240,0.5);
+}
+body.iframed #am_div {
+	top: 10px;
+	width: 600px;
+	height: auto;
+	border-radius: 3px;
+	padding: 12px 12px 6px 12px;
+	background: -webkit-gradient(
+		linear,
+		left top, left bottom,
+		color-stop(0, rgb(254,254,254)),
+		color-stop(1, rgb(231,231,231))
+	);
+	-webkit-box-shadow: 2px 2px 4px #666;
+}
+#am_div {
+	margin: 0;
+	font: normal 13px Helvetica, sans-serif;
+}
+#header {
+	position: relative;
+}
+h1 {
+	display: inline-block;
+	position: relative;
+	left: 50px;
+	font-size: 18px;
+	font-weight: normal;
+}
+#buttons {
+	display: inline-block;
+	position: absolute;
+	right: 36px;
+	margin-top: 10px;
+}
+#buttons button {
+	width: 66px;
+	margin: 0 2px;
+	padding: 4px 0;
+	font-size: 13px;
+}
+#buttons button#submit {
+	font-weight: bold;
+}
+div#form {
+	margin: 15px 40px 15px 20px;
+}
+#formtable {
+	width: 100%;
+}
+#labels {
+	width: 80px;
+}
+td, th {
+	padding: 1px 3px;
+	vertical-align: top;
+}
+th {
+	text-align: right;
+	font-weight: normal;
+}
+th > label {
+	position: relative;
+	top: 5px;
+}
+input, textarea {
+	font: normal 12px Helvetica;
+}
+input[disabled] {
+	background-color: transparent;
+}
+label + label {
+	margin-left: 10px;
+}
+label > input[type="text"] {
+	position: relative; 
+	top: -1px;
+}
+#options th, #options td {
+	padding: 2px 0 5px;
+}
+#title, #url, #blurb {
+	width: 100%;
+	padding: 3px;
+	border: 1px solid silver;
+	border-radius: 2px;
+}
+#blurb {
+	height: 42px;
+}

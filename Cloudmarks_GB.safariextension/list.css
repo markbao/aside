@@ -1,0 +1,235 @@
+html {
+	height: 100%;
+}
+body.iframed {
+	display: -webkit-box;
+	-webkit-box-pack: center;
+	margin-top: 20px;
+	background-color: rgba(0,0,0,0.5);
+	cursor: default;
+}
+body.popover {
+	padding-left: 5px;
+	/*padding-right: 5px;*/
+	background-color: rgba(240,240,240,0.25);
+}
+div {
+	position: relative;
+}
+#outerdiv {
+	margin: 0;
+	padding: 0;
+	border-style: none;
+	text-align: left;
+} .iframed #outerdiv {
+	top: 10px;
+	width: 600px;
+	height: auto;
+	border-radius: 3px;
+	padding: 12px 12px 6px 12px;
+	background: -webkit-gradient(
+		linear,
+		left top, left bottom,
+		color-stop(0, rgb(254,254,254)),
+		color-stop(1, rgb(231,231,231))
+	);
+	-webkit-box-shadow: 2px 2px 4px #666;
+}
+#innerdiv {
+	width: auto;
+	height: auto;
+	margin: 0;
+	padding: 0;
+	border-style: none;
+	white-space: nowrap;
+}
+#upperdiv {
+	white-space: nowrap;
+	font-family: "Lucida Grande", "Segoe UI", sans-serif !important;
+	font-size: 12px !important;
+}
+#inputfield {
+	width: 270px;
+	height: auto;
+	outline: none;
+	border: 1px solid #a0a0a0;
+	border-radius: 3px;
+	box-shadow: inset -0px 1px 4px -1px #bbb;
+	background: white;
+	padding: 4px;
+	color: black;
+	font-size: 12px;
+	font-style: normal;
+	color: black;
+}
+#inputfield:focus {
+	border-color: #0096ff;
+}
+#clearinput {
+	display: block;
+	position: absolute;
+	left: 261px;
+	top: 7px;
+	width: 16px;
+	height: 16px;
+	background: url('clear.png') no-repeat;
+}
+#clearinput:hover {
+	background-image: url('clear-hover.png');
+}
+#clearinput.clicked {
+	background-image: url('clear-clicked.png');
+}
+#messagespan {
+	display: inline-block;
+	max-width: 200px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin-left: 1em;
+	font-size: 11px;
+	color: #444;
+	text-shadow: white 1px 1px 0px;
+}
+#messagespan .waiting {
+	display: inline-block;
+	position: absolute;
+	top: 12px;
+	width: 16px;
+	height: 16px;
+	background: url(watch.gif) no-repeat;
+	opacity: 0.5;
+}
+#buttonspan {
+	float: right;
+}
+.button {
+	padding: 4px 7px 3px;
+	font-size: 14px;
+	color: #444;
+}
+#reloadbutton > img {
+	top: 1px;
+}
+#lowerdiv {
+	clear: both;
+	padding-top: 1.5ex;
+	font-family: "Helvetica Neue", "Segoe UI", sans-serif !important;
+	font-size: 13px;
+}
+#bmlist {
+	clear: both;
+	overflow: auto;
+	margin: 0;
+	padding: 0 5px 0 0;
+}
+.bookmark {
+	box-sizing: border-box;
+	width: auto;
+	margin: 0;
+	padding: 3px 6px;
+	border: 1px solid transparent;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	cursor: pointer;
+}
+.bookmark.selected {
+	border: 1px solid #aaa;
+	border-radius: 3px;
+	background-color: #fafafa;
+}
+.bookmark-top {
+	max-height: 16px;
+	padding-top: 1px;
+}
+.bookmark-bottom {
+}
+.bookmark > div {
+	position: relative;
+	width: 100%;
+}
+.bookmark > div > span {
+	display: inline-block;
+}
+.age {
+	position: relative;
+	top: 1px;
+	float: right;
+	color: #888;
+	font-size: 12px;
+	font-weight: 300;
+}
+.name-tags {
+	width: 472px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.favicon {
+	width: 16px;
+	height: 16px;
+	margin-right: 2px;
+	vertical-align: text-bottom;
+}
+.name {
+	font-weight: 500;
+	color: #444;
+} .selected .name {
+	color: #00158f;
+}
+.tags {
+	margin-left: 8px;
+	color: #888;
+	font-size: 12px;
+}
+.blurb, .url {
+	position: absolute;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 12px;
+	font-weight: 300;
+	color: #888;
+}
+.blurb {
+	width: 480px;
+} .showurl .blurb {
+	width: 0px;
+}
+.url {
+	width: 0px;
+} .showurl .url {
+	width: 480px;
+}
+.ia_wrapper {
+	display: none;
+	/*display: inline-block;*/
+	float: right;
+	padding: 1px;
+	cursor: pointer;
+}
+.ia_wrapper .icon {
+	visibility: hidden;
+	opacity: 0.25;
+	transition: opacity .25s;
+	font-size: 13px;
+} .bookmark:hover .ia_wrapper .icon {
+	/*visibility: visible;*/
+}
+.ia_wrapper:hover .icon {
+	opacity: 1;
+	font-size: 13px;
+}
+.ia_delete {
+	display: inline-block;
+	width: 20px;
+	height: 14px;
+	text-align: center;
+	font-family: 'icomoon';
+	font-size: 11px !important;
+}
+.ia_delete:before {
+	content: "\e004";
+	color: #F00;
+}
+#searchprompt {
+	margin-bottom: 8px;
+}

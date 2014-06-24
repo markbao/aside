@@ -1,0 +1,129 @@
+body#sfMenu {
+	width: 100px;
+	margin: 0px;
+	padding: 0px;
+	background-color: #EEEEEE;
+	font: 15px Helvetica;
+}
+body#settingsBody, body#stylesBody {
+	width: auto;
+	margin: 20px;
+	font: 13px Helvetica;
+}
+.sfMenuItem-unselected {
+	width: auto;
+	background-color: #DEE4EA;
+	border-bottom: 1px solid silver;
+	padding: 20px;
+	cursor: pointer;
+	font-weight: normal;
+}
+.sfMenuItem-selected {
+	width: auto;
+	background-color: white;
+	border-bottom: 1px solid silver;
+	padding: 20px;
+	cursor: pointer;
+	font-weight: bold;
+}
+h1 {
+	border-bottom: 1px solid gray;
+	padding-bottom: 0.5em;
+	font-size: 18px;
+}
+h3 {
+	margin-top: 2em;
+}
+#helpLink {
+	position: relative;
+	top: 0.5em;
+	float: right;
+	margin-right: 0.5em;
+	font-size: 14px;
+}
+.flexbox {
+	display: -webkit-box;
+	-webkit-box-align: center;
+}
+.small {
+	font-size: 11px;
+}
+.explanation {
+	margin-top: 0px;
+}
+.explanation.small {
+	margin-top: 5px;
+}
+.slimbmargin {
+	margin: 0 0 3px;
+}
+.indent {
+	margin-left: 1em;
+}
+.indent2 {
+	margin-left: 2em;
+}
+.spacer {
+	margin: 0 5px;
+}
+.hidden {
+	display: none;
+}
+.transparent {
+	opacity: 0 !important;
+}
+.visible {
+	visibility: visible !important;
+	opacity: 1;
+}
+.sButton {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.statusMsg {
+	color: red;
+	cursor: default;
+	visibility: hidden;
+	-webkit-transition: opacity 0.5s linear;
+}
+#delicious_tip {
+	font-size: 11px;
+}
+#bsForm {
+	width: 300px;
+}
+#klForm {	
+}
+#hkForm {
+	margin-left: 20px;
+}
+#hotkeyInput {
+	width: 9em;
+	border: 1px solid silver;
+	font: 12px Lucida Grande;
+}
+#hkResetBtn {
+	margin-left:    2em;
+	margin-right: 2em;
+}
+#hkStatusMsg {
+	color: red;
+}
+#miForm {
+	line-height: 25px;
+}
+input[type="checkbox"] {
+	margin-top: 1ex;
+}
+input[type="checkbox"].l2 {
+	margin-left: 2em;
+}
+label.enabled {
+	color: #000;
+}
+label.disabled {
+	color: #bbb;
+}
+span.indent {
+	margin-left: 1em;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel='stylesheet' type='text/css' href='add.css'>
+	<link rel='stylesheet' type='text/css' href='select2.css'>
+	<script type="text/javascript" charset="utf-8" src="underscore-min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="jquery-2.1.0.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="select2.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="add.js"></script>
+</head>
+<body class="add">
+	<div id="am_div">
+		<div id="header">
+			<h1>Add Bookmark</h1>
+			<div id="buttons">
+				<button id="submit" onclick="submitBookmark()" tabindex="80">Submit</button>
+				<button id="cancel" onclick="goAway(true)" tabindex="90">Cancel</button>
+			</div>
+		</div>
+		<div id="form">
+			<table id="formtable">
+				<col id="labels"><col id="fields">
+				<tr><th><label>Title:</label></th><td><input id="title" type="text" tabindex="10"></td></tr>
+				<tr><th><label>URL:</label></th><td><input id="url" type="text" tabindex="20"></td></tr>
+				<tr><th><label>Description:</label></th><td><textarea id="blurb" tabindex="30"></textarea></td></tr>
+				<tr id="options">
+					<th><label style="top: 1px;">Options:</label></th>
+					<td><label><input id="shared" type="checkbox" tabindex="40"> Make public</label>
+						<label><input id="toread" type="checkbox" tabindex="45"> Mark unread</label>
+						<span style="margin-left: 1ex; font-size: 11px;">(Pinboard only)</span>
+					</td>
+				</tr>
+				<tr><th><label>Tags:</label></th>
+					<td>
+						<input id="tags" type="hidden" tabindex="50">
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

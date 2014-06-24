@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" charset="utf-8" src="add.js"></script>
+	<script type="text/javascript" charset="utf-8" src="wick.js"></script>
+	<link rel='stylesheet' type='text/css' href='add.css'>
+	<link rel='stylesheet' type='text/css' href='wick.css'>
+</head>
+<body class="add">
+	<div id="am_div">
+		<div id="header">
+			<h1>Add Bookmark</h1>
+			<div id="buttons">
+				<button id="submit" onclick="submitBookmark()" tabindex="80">Submit</button>
+				<button id="cancel" onclick="goAway(true)" tabindex="90">Cancel</button>
+			</div>
+		</div>
+		<div id="form">
+			<table id="formtable">
+				<col id="labels"><col id="fields">
+				<tr><th><label>Title:</label></th><td><input id="title" type="text" tabindex="10"></td></tr>
+				<tr><th><label>URL:</label></th><td><input id="url" type="text" tabindex="20"></td></tr>
+				<tr><th><label>Description:</label></th><td><textarea id="blurb" tabindex="30"></textarea></td></tr>
+				<tr><th><label>Tags:</label></th>
+					<td>
+						<input id="tags" class="wickEnabled" type="text" tabindex="50">
+						<div id="smartInputFloater" class="floater">
+							<div id="smartInputFloaterContent"></div>
+						</div>
+					</td>
+				</tr>
+				<tr><th></th><td id="tagCloud"></td></tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
