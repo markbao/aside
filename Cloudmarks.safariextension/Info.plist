@@ -118,7 +118,7 @@
 		</dict>
 	</dict>
 	<key>Update Manifest URL</key>
-	<string>https://github.com/canisbos/Cloudmarks/blob/master/dist/Pickpocket.safariextz?raw=true</string>
+	<string>https://raw.githubusercontent.com/canisbos/Cloudmarks/master/dist/Update.plist</string>
 	<key>Website</key>
 	<string>http://canisbos.com/</string>
 </dict>
