@@ -107,13 +107,18 @@ function initialize(firstTime) {
 			}
 		});
 	} else {
-		var existingBookmark = _.findWhere(gw.bookmarks, { url: sa.activeBrowserWindow.activeTab.url });
-		if (existingBookmark) {
-			$('#header h1').text('Edit Bookmark');
-			populateFormFromExistingBookmark(existingBookmark);
+		if (sa.activeBrowserWindow.activeTab.page) {
+			var existingBookmark = _.findWhere(gw.bookmarks, { url: sa.activeBrowserWindow.activeTab.url });
+			if (existingBookmark) {
+				$('#header h1').text('Edit Bookmark');
+				populateFormFromExistingBookmark(existingBookmark);
+			} else {
+				if (sa.activeBrowserWindow.activeTab.page)
+					sa.activeBrowserWindow.activeTab.page.dispatchMessage('passPageDescription');
+				$('#header h1').text('Add Bookmark');
+				populateForm();
+			}
 		} else {
-			sa.activeBrowserWindow.activeTab.page.dispatchMessage('passPageDescription');
-			$('#header h1').text('Add Bookmark');
 			populateForm();
 		}
 		gw.getTags(settings.service, function (tagData) {
