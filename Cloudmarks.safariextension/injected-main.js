@@ -116,4 +116,7 @@ if ((/^http/.test(location.protocol) || location.href === 'about:blank') && wind
 		safari.self.addEventListener('message', mm.handleMessageForTop, false);
 	safari.self.tab.dispatchMessage('passSettings', ['hotkey', 'addHotkey']);
 	document.addEventListener('keydown', mm.handleKeyDown, false);
+	window.addEventListener('contextmenu', function (e) {
+		safari.self.tab.setContextMenuEventUserInfo(e, true);
+	}, false);
 }

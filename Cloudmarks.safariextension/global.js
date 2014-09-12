@@ -152,13 +152,33 @@ function deleteCachedFavicons() {
 function doXHR(method, url, data, contentType, successHandler, errorHandler, timeout) {
 	var timerID = Math.random().toString().slice(2);
 	var xhr = new XMLHttpRequest();
+	var waiting = setTimeout(function () {
+		waiting = null;
+		animateButton(getMainButtonForActiveWindow(), timerID, true);
+	}, 2000);
+	var timeouter = setTimeout(function () {
+		console.log('xhr timed out');
+		timeouter = null;
+		xhr.abort();
+		if (waitingButton)
+			animateButton(waitingButton, timerID, false);
+		if (errorHandler) {
+			errorHandler(xhr);
+		} else {
+			alert('Cloudmarks could not connect to ' + SERVICES[se.settings.service].name + '.');
+		}
+	}, timeout || 30000);
 	xhr.onreadystatechange = function () {
 		if (this.readyState === 4) {
 			console.log('Response:', this);
-			clearTimeout(xhr.timeout);
-			clearTimeout(xhr.waiting);
-			if (waitingButton)
-				animateButton(waitingButton, timerID, false);
+			clearTimeout(timeouter);
+			if (waiting) {
+				clearTimeout(waiting);
+				waiting = null;
+				if (waitingButton) {
+					animateButton(waitingButton, timerID, false);
+				}
+			}
 			if (this.status >= 200 && this.status < 300) {
 				if (successHandler) {
 					successHandler(this);
@@ -183,19 +203,6 @@ function doXHR(method, url, data, contentType, successHandler, errorHandler, tim
 	if (method === 'POST')
 		xhr.setRequestHeader("Content-type", contentType);
 	xhr.send(data || null);
-	xhr.waiting = setTimeout(function () {
-		animateButton(getMainButtonForActiveWindow(), timerID, true);
-	}, 2000);
-	xhr.timeout = setTimeout(function () {
-		xhr.abort();
-		if (waitingButton)
-			animateButton(waitingButton, timerID, false);
-		if (errorHandler) {
-			errorHandler(xhr);
-		} else {
-			alert('Cloudmarks could not connect to ' + SERVICES[se.settings.service].name + '.');
-		}
-	}, timeout || 30000);
 }
 function escape(text) {
 	div.textContent = text;
@@ -569,7 +576,7 @@ function handleBeforeSearch(evt) {
 }
 function handleCommand(evt) {
 	switch (evt.command) {
-		case 'toggleList': {
+		case 'toggleList': 
 			var mainButton = getMainButtonForActiveWindow();
 			if (mainButton && se.popovers && se.settings.usePopover) {
 				if (mainButton.popover.visible) {
@@ -586,8 +593,7 @@ function handleCommand(evt) {
 				var ifSrc = (se.settings.service) ? 'list.html' : 'firstrun.html';
 				evt.target.browserWindow.activeTab.page.dispatchMessage('toggleMmFrame', ifSrc);
 			} break;
-		}
-		case 'toggleAddForm': {
+		case 'toggleAddForm':
 			var addButton = getAddButtonForActiveWindow();
 			if (addButton && se.popovers && se.settings.usePopover) {
 				if (addButton.popover.visible) {
@@ -605,12 +611,17 @@ function handleCommand(evt) {
 				var ifSrc = (se.settings.service) ? 'add.html' : 'firstrun.html';
 				evt.target.browserWindow.activeTab.page.dispatchMessage('toggleMmFrame', ifSrc);
 			} break;
-		}
+		case 'bookmarkPage':
+			handleMessage({
+				name   : 'openAddForm',
+				target : sa.activeBrowserWindow.activeTab
+			}); break;
+		default: ;
 	}
 }
 function handleContextMenu(evt) {
 	if (evt.userInfo) {
-		evt.contextMenu.appendContextMenuItem('addPbBookmark','Pin This Page to Pinboard');
+		evt.contextMenu.appendContextMenuItem('bookmarkPage','Cloudmark This Page');
 	}
 }
 function handleMessage(evt) {
@@ -1137,13 +1148,14 @@ function submitBookmark(service, data, callback) {
 			doXHR('POST', endpoint, xhrData, 'application/json', onSuccess, onFailure, 60000);
 		}
 	} else {
-		var xhrData = '?url=' + encodeURIComponent(data.url) +
+		var xhrData = 
+			'?url='         + encodeURIComponent(data.url) +
 			'&description=' + encodeURIComponent(data.title) +
-			'&extended=' + encodeURIComponent(data.blurb) +
-			'&tags=' + encodeURIComponent(data.tags.replace(/, /g, ',')) +
-			'&shared=' + (data.shared ? 'yes' : 'no') +
-			'&toread=' + (data.toread ? 'yes' : 'no');
-		doXHR('GET', SERVICES[service].endpoints['addBookmark'], xhrData, null, onSuccess, onFailure, 60000);
+			'&extended='    + encodeURIComponent(data.blurb) +
+			'&tags='        + encodeURIComponent(data.tags.replace(/, /g, ',')) +
+			'&shared='      + (data.shared ? 'yes' : 'no') +
+			'&toread='      + (data.toread ? 'yes' : 'no');
+		doXHR('GET', SERVICES[service].endpoints['addBookmark'], xhrData, null, onSuccess, onFailure, 30000);
 	}
 }
 function syncBookmarks(service) {
