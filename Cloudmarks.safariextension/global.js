@@ -1287,12 +1287,12 @@ var sa = safari.application;
 var se = safari.extension;
 var a = document.createElement('a');
 var div = document.createElement('div');
-var bmDownTime = localStorage.getItem('bmDownTime') * 1;
-var getAllCallTime = localStorage.getItem('getAllCallTime') * 1;
-var waitingButton = null;
 var waitTimers = [];
+var waitingButton = null;
 var updateTime = null;
 var lastUpdateCheckTime = 0;
+var getAllCallTime = localStorage.getItem('getAllCallTime') * 1;
+var bmDownTime = localStorage.getItem('bmDownTime') * 1;
 var bookmarks = localStorage.getItem(bookmarks);
 
 if (bookmarks != null) {

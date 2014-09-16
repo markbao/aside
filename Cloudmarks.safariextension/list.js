@@ -2,7 +2,6 @@ function initialize() {
 	popover = !!(safari.self.identifier);
 	iframed = !popover;
 	lion = !!(navigator.appVersion.match('10_7'));
-	safari51 = !!(navigator.appVersion.match('Version/5.1'));
 	sa = safari.application;
 	gw = (popover) ? safari.extension.globalPage.contentWindow : null;
 	allBookmarks = (popover) ? gw.bookmarks : null;
@@ -25,18 +24,8 @@ function initialize() {
 		safari.self.tab.dispatchMessage('passBookmarks');
 	}
 	inputField = document.querySelector('#inputfield');
-	inputField.onfocus = function (e) {
-		if (popover && safari51 && lion) {
-			this.style.outline = 'auto -webkit-focus-ring-color';
-		}
-	};
 	inputField.onkeydown = handleInputKeyDown;
 	inputField.onkeyup = handleInputKeyUp;
-	inputField.onblur = function (e) {
-		if (popover && safari51 && lion) {
-			this.style.outline = '';
-		}
-	};
 	inputClear = document.querySelector('#clearinput');
 	inputClear.onmousedown = function (e) {
 		inputClear.className = 'clicked';
