@@ -13,14 +13,14 @@ function animateButton(button, timerID, action) {
 			setButtonIcon(button, 'watch0');
 		}
 		waitTimers[timerID] = setInterval(incrementTimer, 250);
-		waitingButton = button;
+		return button;
 	} else {
 		clearInterval(waitTimers[timerID]);
 		delete waitTimers[timerID];
 		if (countWaitingTimers() === 0) {
 			setButtonIcon(waitingButton, 'bookmark');
-			waitingButton = null;
 		}
+		return null;
 	}
 }
 function assignBookmarkHits(bm) {
@@ -154,14 +154,15 @@ function doXHR(method, url, data, contentType, successHandler, errorHandler, tim
 	var xhr = new XMLHttpRequest();
 	var waiting = setTimeout(function () {
 		waiting = null;
-		animateButton(getMainButtonForActiveWindow(), timerID, true);
+		waitingButton = animateButton(getMainButtonForActiveWindow(), timerID, true);
 	}, 2000);
 	var timeouter = setTimeout(function () {
 		console.log('xhr timed out');
 		timeouter = null;
 		xhr.abort();
-		if (waitingButton)
-			animateButton(waitingButton, timerID, false);
+		if (waitingButton) {
+			waitingButton = animateButton(waitingButton, timerID, false);
+		}
 		if (errorHandler) {
 			errorHandler(xhr);
 		} else {
@@ -176,7 +177,7 @@ function doXHR(method, url, data, contentType, successHandler, errorHandler, tim
 				clearTimeout(waiting);
 				waiting = null;
 				if (waitingButton) {
-					animateButton(waitingButton, timerID, false);
+					waitingButton = animateButton(waitingButton, timerID, false);
 				}
 			}
 			if (this.status >= 200 && this.status < 300) {
