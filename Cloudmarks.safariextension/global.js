@@ -568,10 +568,15 @@ function getTags(service, callback) {
 }
 function handleBeforeSearch(evt) {
 	if (se.settings.allowBarSearch) {
-		var markedQuery = /^\s*(\S+) +(.+)/.exec(evt.query);
-		if (markedQuery && markedQuery[1] == se.settings.barSearchPrefix) {
+		if (evt.query == se.settings.barSearchPrefix) {
 			evt.preventDefault();
-			showListPopover(markedQuery[2]);
+			showListPopover();
+		} else {
+			var markedQuery = /^\s*(\S+) +(.+)/.exec(evt.query);
+			if (markedQuery && markedQuery[1] == se.settings.barSearchPrefix) {
+				evt.preventDefault();
+				showListPopover(markedQuery[2]);
+			}
 		}
 	}
 }
