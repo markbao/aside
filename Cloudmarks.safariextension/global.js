@@ -152,17 +152,17 @@ function deleteCachedFavicons() {
 function doXHR(method, url, data, contentType, successHandler, errorHandler, timeout) {
 	var timerID = Math.random().toString().slice(2);
 	var xhr = new XMLHttpRequest();
-	var waiting = setTimeout(function () {
-		waiting = null;
-		waitingButton = animateButton(getMainButtonForActiveWindow(), timerID, true);
-	}, 2000);
+	// var waiting = setTimeout(function () {
+	// 	waiting = null;
+	// 	waitingButton = animateButton(getMainButtonForActiveWindow(), timerID, true);
+	// }, 2000);
 	var timeouter = setTimeout(function () {
 		console.log('xhr timed out');
 		timeouter = null;
 		xhr.abort();
-		if (waitingButton) {
-			waitingButton = animateButton(waitingButton, timerID, false);
-		}
+		// if (waitingButton) {
+		// 	waitingButton = animateButton(waitingButton, timerID, false);
+		// }
 		if (errorHandler) {
 			errorHandler(xhr);
 		} else {
@@ -173,13 +173,13 @@ function doXHR(method, url, data, contentType, successHandler, errorHandler, tim
 		if (this.readyState === 4) {
 			console.log('Response:', this);
 			clearTimeout(timeouter);
-			if (waiting) {
-				clearTimeout(waiting);
-				waiting = null;
-				if (waitingButton) {
-					waitingButton = animateButton(waitingButton, timerID, false);
-				}
-			}
+			// if (waiting) {
+			// 	clearTimeout(waiting);
+			// 	waiting = null;
+			// 	if (waitingButton) {
+			// 		waitingButton = animateButton(waitingButton, timerID, false);
+			// 	}
+			// }
 			if (this.status >= 200 && this.status < 300) {
 				if (successHandler) {
 					successHandler(this);
@@ -1294,7 +1294,7 @@ var se = safari.extension;
 var a = document.createElement('a');
 var div = document.createElement('div');
 var waitTimers = [];
-var waitingButton = null;
+// var waitingButton = null;
 var updateTime = null;
 var lastUpdateCheckTime = 0;
 var getAllCallTime = localStorage.getItem('getAllCallTime') * 1;
