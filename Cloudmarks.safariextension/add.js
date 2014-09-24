@@ -10,7 +10,7 @@ function goAway(andFocusParent) {
 }
 function handleAddMarkKeyPress(evt) {
 	if (evt.which === 13) {
-		evt.target.blur();
+		evt.currentTarget.blur();
 		submitBookmark();
 	}
 }
@@ -72,25 +72,15 @@ function initialize(firstTime) {
 			safari.self.tab.dispatchMessage('passExistingBookmark');
 			safari.self.tab.dispatchMessage('passTags');
 		}
-		$amTitleField = $('input#title').on({
-			'blur'     : trimField,
-			'keypress' : handleAddMarkKeyPress
-		});
-		$amUrlField = $('input#url').on({
-			'blur'       : trimField,
-			'onkeypress' : handleAddMarkKeyPress
-		});
+		$amTitleField = $('input#title').on('blur', trimField);
+		$amUrlField = $('input#url').on('blur', trimField);
 		$amBlurbField = $('textarea#blurb').on('blur', trimField);
 		$amSharedField = $('input#shared');
 		$amUnreadField = $('input#toread');
 		$amTagsField = $('input#tags').select2({
-			tags  : [], 
-			width : '100%' 
-		}).on({
-			'blur': function () {
-				this.value = this.value.replace(/^[,\s]+/,'').replace(/ +/g,' ').replace(/[,\s]+/g,', ').replace(/[,\s]+$/,'');
-			},
-			'keypress': handleAddMarkKeyPress
+			tags        : [],
+			openOnEnter : false, 
+			width       : '100%'
 		});
 		$('button#cancel').on('keydown', function (evt) {
 			evt.preventDefault();
@@ -106,6 +96,7 @@ function initialize(firstTime) {
 				return false;
 			}
 		});
+		$(document).on('keypress', 'input', handleAddMarkKeyPress);
 	} else {
 		if (sa.activeBrowserWindow.activeTab.page) {
 			var existingBookmark = _.findWhere(gw.bookmarks, { url: sa.activeBrowserWindow.activeTab.url });
@@ -153,7 +144,12 @@ function populateTagMenu(tagData) {
 	tagData.tags.sort(function (a,b) { return a.count - b.count });
 	var tags = tagData.tags.map(function (tag) { return tag.value });
 	// console.log('tags:', tags);
-	$amTagsField.select2({ tags: tags, tokenSeparators: [','], width: '100%' }).select2('val', '');
+	$amTagsField.select2({
+		tags            : tags,
+		tokenSeparators : [','],
+		openOnEnter     : false,
+		width           : '100%'
+	}).select2('val', '');
 	safari.self.height = document.body.offsetHeight + 40;
 	$(window).trigger('tagsfilled');
 }
