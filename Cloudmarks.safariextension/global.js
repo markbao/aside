@@ -1234,11 +1234,11 @@ const SERVICES = {
 	'delicious' : {
 		name : 'Delicious',
 		endpoints: {
-			'getAllBookmarks' : 'http://feeds.delicious.com/v1/posts/all?format=xml',
-			'getUpdateTime'   : 'http://feeds.delicious.com/v1/posts/update',
-			'getTags'         : 'http://feeds.delicious.com/v1/tags/get',
-			'addBookmark'     : 'http://feeds.delicious.com/v1/posts/add',
-			'deleteBookmark'  : 'http://feeds.delicious.com/v1/posts/delete'
+			'getAllBookmarks' : 'https://api.delicious.com/v1/posts/all?format=xml',
+			'getUpdateTime'   : 'https://api.delicious.com/v1/posts/update',
+			'getTags'         : 'https://api.delicious.com/v1/tags/get',
+			'addBookmark'     : 'https://api.delicious.com/v1/posts/add',
+			'deleteBookmark'  : 'https://api.delicious.com/v1/posts/delete'
 		}
 	},
 	'kippt' : {
