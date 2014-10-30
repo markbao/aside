@@ -127,6 +127,7 @@ function deleteBookmark(li) {
 		gw.deleteBookmarkFromService(null, getBookmarkFromId(li.id), function () {
 			selectListItem(li.nextSibling || bookmarkList.firstChild);
 			bookmarkList.removeChild(li);
+			showDefaultBookmarks();
 		});
 	} else {
 		safari.self.tab.dispatchMessage('deleteBookmark', li.id);

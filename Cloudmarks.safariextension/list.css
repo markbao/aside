@@ -100,15 +100,28 @@ div {
 	opacity: 0.5;
 }
 #buttonspan {
-	float: right;
+	position: absolute;
+	top: 2px;
+	right: 5px;
+	text-align: right;
 }
 .button {
-	padding: 4px 7px 3px;
+	display: inline-block;
+	margin: 0px;
+	margin-left: 4px;
+	padding: 4px 6px;
+	text-align: center;
+	vertical-align: middle;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	background: transparent;
+	cursor: default;
 	font-size: 14px;
-	color: #444;
+	color: #555;
 }
-#reloadbutton > img {
-	top: 1px;
+.button:hover {
+	border-color: #eee;
+	background: #f8f8f8;
 }
 #lowerdiv {
 	clear: both;
