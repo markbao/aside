@@ -17,7 +17,8 @@ body.iframed #am_div {
 	top: 10px;
 	width: 600px;
 	height: auto;
-	border-radius: 3px;
+	/*border-radius: 3px;*/
+	border-top: 3px solid rgb(187, 68, 17);
 	padding: 12px 12px 6px 12px;
 	background: -webkit-gradient(
 		linear,
@@ -101,4 +102,47 @@ label > input[type="text"] {
 }
 #blurb {
 	height: 42px;
+}
+
+/* Animations from animate.css */
+
+@-webkit-keyframes zoomIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(.97, .97, .97);
+    transform: scale3d(.97, .97, .97);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(.97, .97, .97);
+    transform: scale3d(.97, .97, .97);
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+  	-webkit-transform: scale3d(1,1,1);
+  	transform: scale3d(1,1,1);
+  }
+}
+
+.zoomIn {
+  -webkit-animation-name: zoomIn;
+  animation-name: zoomIn;
+}
+
+.animated {
+  -webkit-animation-duration: 0.2s;
+  animation-duration: 0.2s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
 }
