@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Canisbos Computing</string>
 	<key>Builder Version</key>
-	<string>10600.1.25</string>
+	<string>10600.6.3</string>
 	<key>CFBundleDisplayName</key>
 	<string>Cloudmarks</string>
 	<key>CFBundleIdentifier</key>
@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.2.13</string>
+	<string>2.2.14</string>
 	<key>CFBundleVersion</key>
-	<string>2213</string>
+	<string>2214</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
@@ -104,7 +104,7 @@
 	<key>Description</key>
 	<string>Quickly search and open your Pinboard, Delicious, or Kippt bookmarks.</string>
 	<key>DeveloperIdentifier</key>
-	<string>ZANVZTSER6</string>
+	<string>8GR4BVE365</string>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>
 	<key>Permissions</key>

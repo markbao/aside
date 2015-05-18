@@ -118,7 +118,7 @@ function initialize(firstTime) {
 	}
 }
 function populateForm() {
-	$amTitleField.val(popover ? sa.activeBrowserWindow.activeTab.title : settings.pageTitle).select();
+	$amTitleField.val(popover ? sa.activeBrowserWindow.activeTab.title : settings.pageTitle);
 	$amUrlField.val(popover ? sa.activeBrowserWindow.activeTab.url : settings.pageUrl).prop('disabled', false);
 	$amBlurbField.val('');
 	$amSharedField.prop('checked', settings.addShared);
