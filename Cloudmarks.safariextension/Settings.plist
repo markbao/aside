@@ -8,7 +8,7 @@
 		<key>Key</key>
 		<string>openSettings</string>
 		<key>Title</key>
-		<string>Click to open Cloudmarks settings</string>
+		<string>Click to open Aside settings</string>
 		<key>Type</key>
 		<string>CheckBox</string>
 	</dict>

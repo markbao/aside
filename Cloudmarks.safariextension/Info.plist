@@ -3,19 +3,19 @@
 <plist version="1.0">
 <dict>
 	<key>Author</key>
-	<string>Canisbos Computing</string>
+	<string>Mark Bao</string>
 	<key>Builder Version</key>
 	<string>10600.6.3</string>
 	<key>CFBundleDisplayName</key>
-	<string>Cloudmarks</string>
+	<string>Aside</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.canisbos.moofmarks</string>
+	<string>com.thebaogroup.aside-bookmarks</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
 	<string>2.2.14</string>
 	<key>CFBundleVersion</key>
-	<string>2214</string>
+	<string>2.2.14</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
@@ -102,7 +102,7 @@
 		</dict>
 	</dict>
 	<key>Description</key>
-	<string>Quickly search and open your Pinboard, Delicious, or Kippt bookmarks.</string>
+	<string>Quickly search and open your Pinboard, Delicious, or Kippt bookmarks. A clone of casinos</string>
 	<key>DeveloperIdentifier</key>
 	<string>8GR4BVE365</string>
 	<key>ExtensionInfoDictionaryVersion</key>
@@ -117,9 +117,7 @@
 			<string>All</string>
 		</dict>
 	</dict>
-	<key>Update Manifest URL</key>
-	<string>https://raw.githubusercontent.com/canisbos/Cloudmarks/master/dist/Update.plist</string>
 	<key>Website</key>
-	<string>http://canisbos.com/</string>
+	<string>https://github.com/markbao/aside</string>
 </dict>
 </plist>
